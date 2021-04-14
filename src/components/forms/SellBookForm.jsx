@@ -12,6 +12,9 @@ export const SellBookForm = () => {
     publisher: '',
     department: '',
     courseUsedIn: '',
+    sell: false,
+    trade: false,
+    post_description: ''
   });
   const title = inputs.title;
   const author = inputs.author;
@@ -20,6 +23,9 @@ export const SellBookForm = () => {
   const publisher = inputs.publisher;
   const department = inputs.department;
   const courseUsedIn = inputs.courseUsedIn;
+  const sell = inputs.type_sell;
+  const trade = inputs.type_trade;
+  const post_description = inputs.post_description;
 
   const changeTitle = (e) => {
     setInput((prevState) => {
@@ -56,6 +62,24 @@ export const SellBookForm = () => {
   const changeCourseUsedIn = (e) => {
     setInput((prevState) => {
       return { ...prevState, courseUsedIn: e.target.value };
+    });
+  };
+  const changeSell= (e) => {
+    setInput((prevState) => {
+      return { ...prevState, sell: !sell};
+    });
+  };
+
+  const changeTrade= (e) => {
+    setInput((prevState) => {
+      return { ...prevState, trade: !trade };
+    });
+  };
+
+  const changeDescription= (e) => {
+    console.log(e.target.value);
+    setInput((prevState) => {
+      return { ...prevState, description: e.target.value };
     });
   };
 
@@ -168,7 +192,15 @@ export const SellBookForm = () => {
           value={courseUsedIn}
           onChange={changeCourseUsedIn}
           placeholder="COSC 336"
-        ></S.Input>
+        ></S.Input>        
+        <input
+        type="textarea"
+        id="post_description"
+        name="post_description"
+        value={post_description}
+        onChange={changeDescription}
+        placeholder="Write your description here"
+        />
         <S.SaleOrTradeContainer>
           <S.Label>Sell or Trade</S.Label>
           <S.RadioButtonContainer>
@@ -176,15 +208,16 @@ export const SellBookForm = () => {
               type="radio"
               name="type"
               value="sell"
-              id="type"
-              defaultChecked
+              id="type_sell"
+              onChange={changeSell}
             ></S.RadioButton>
             <S.RadioLabel HMLTFor="type">Sell</S.RadioLabel>
             <S.RadioButton
               type="radio"
               name="type"
               value="trade"
-              id="type"
+              id="type_trade"
+              onChange={changeTrade}
             ></S.RadioButton>
             <S.RadioLabel HMLTFor="type">Trade</S.RadioLabel>
           </S.RadioButtonContainer>
