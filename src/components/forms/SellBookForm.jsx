@@ -193,14 +193,14 @@ export const SellBookForm = () => {
           onChange={changeCourseUsedIn}
           placeholder="COSC 336"
         ></S.Input>        
-        <input
+        <textarea 
         type="textarea"
         id="post_description"
         name="post_description"
-        value={post_description}
+        //value={post_description}
         onChange={changeDescription}
         placeholder="Write your description here"
-        />
+        ></textarea>
         <S.SaleOrTradeContainer>
           <S.Label>Sell or Trade</S.Label>
           <S.RadioButtonContainer>
